@@ -1,4 +1,7 @@
 module.exports = {
+    init: function(param) {
+        this.validParam(param);
+    },
     getParam: function() {
         const args = process.argv.slice(2);
         
