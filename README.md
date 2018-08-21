@@ -2,12 +2,6 @@
 
 ### How To
 
-Run the following command with path/url parameter:
-`node run main.js [url|path]`
-
-
-### System
-
-    Node : v8.9.3
-    npm  : 5.5.1
-    OS   : macOS High Sierra
+Run the following commands with path/url parameter:
+`docker run -t -d --name meuspedidos-challenge gregorisoria/meuspedidos-challenge`
+`docker exec meuspedidos-challenge node main.js [url|path]`

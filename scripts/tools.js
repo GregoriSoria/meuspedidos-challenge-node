@@ -6,7 +6,7 @@ module.exports = {
         const args = process.argv.slice(2);
         
         if (!args || !args.length) {
-            console.log("Please type a URL. Example: \`node main.js http://www.google.com\`");
+            console.log("Please type a Address. Example: \`node main.js http://www.google.com\`");
             return false;
         }
         
@@ -78,7 +78,6 @@ module.exports = {
                 content: JSON.parse(str),
                 fileType: 'JSON'
             };
-            console.log('File type: ', obj.fileType);
             return obj;
         } catch (err) {
             const obj = {
@@ -87,7 +86,6 @@ module.exports = {
             }
 
             if (obj.content && obj.content.length) {
-                console.log('File type: ', obj.fileType);
                 return obj;
             } else {
                 console.log('Invalid text!');
@@ -131,9 +129,7 @@ module.exports = {
             console.log('ERROR: Insert param!');
             return false;
         }
-        
-        console.log('Param type: ', type);
-        
+                
         switch (type) {
             case 'PATH':
                 const fs = require('fs');
@@ -165,12 +161,14 @@ module.exports = {
             break;
         
             default:
-                console.log('unidentified param type')
+                console.log('Unidentified param type')
         }
     },
     filter: function(json) {
         json.content = this.sortByAttr(json.content, 'estado');
         const result = this.groupByAttr(json.content, 'estado');
-        console.log(JSON.stringify(result));
+        for (let i = 0; i < result.length; i++) {
+            console.log(result[i].state + ': ' + result[i].length);
+        }
     }
 };
